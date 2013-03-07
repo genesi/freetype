@@ -131,7 +131,7 @@ FT_BEGIN_HEADER
   /* rules below.  A blank entry "" is required at the end of these!       */
 #define FAMILY_CLASS_RULES_SIZE  7
 
-  Font_Class FAMILY_CLASS_Rules
+  static Font_Class FAMILY_CLASS_Rules
                [FAMILY_CLASS_RULES_SIZE] =
   {
     { "MS Legacy Fonts",
@@ -285,7 +285,7 @@ FT_BEGIN_HEADER
   /* rules below.  A blank entry "" is required at the end of these!       */
 #define STYLE_CLASS_RULES_SIZE  5
 
-  Font_Class STYLE_CLASS_Rules
+  static Font_Class STYLE_CLASS_Rules
                [STYLE_CLASS_RULES_SIZE] =
   {
     { "Regular Class",
@@ -342,7 +342,7 @@ FT_BEGIN_HEADER
   /* this is the primary workhorse rule for legacy fonts                   */
 #define COMPATIBILITY_MODE_RULES_SIZE  4
 
-  SPH_TweakRule  COMPATIBILITY_MODE_Rules
+  static SPH_TweakRule  COMPATIBILITY_MODE_Rules
                    [COMPATIBILITY_MODE_RULES_SIZE] =
   {
     { "MS Legacy Fonts", 0, "", 0 },
@@ -355,7 +355,7 @@ FT_BEGIN_HEADER
   /* Don't do subpixel (ignore_x_mode) hinting; do normal hinting.         */
 #define PIXEL_HINTING_RULES_SIZE  4
 
-  SPH_TweakRule  PIXEL_HINTING_Rules
+  static SPH_TweakRule  PIXEL_HINTING_Rules
                    [PIXEL_HINTING_RULES_SIZE] =
   {
     /* these characters are almost always safe */
@@ -372,7 +372,7 @@ FT_BEGIN_HEADER
   /* where absolutely necessary.                                           */
 #define SKIP_INLINE_DELTAS_RULES_SIZE  1
 
-  SPH_TweakRule  SKIP_INLINE_DELTAS_Rules
+  static SPH_TweakRule  SKIP_INLINE_DELTAS_Rules
                    [SKIP_INLINE_DELTAS_RULES_SIZE] =
   {
     { "-", 0, "", 0 },
@@ -382,7 +382,7 @@ FT_BEGIN_HEADER
   /* Subpixel hinting ignores SHPIX rules on X.  Force SHPIX for these.    */
 #define DO_SHPIX_RULES_SIZE  1
 
-  SPH_TweakRule  DO_SHPIX_Rules
+  static SPH_TweakRule  DO_SHPIX_Rules
                    [DO_SHPIX_RULES_SIZE] =
   {
     { "-", 0, "", 0 },
@@ -393,7 +393,7 @@ FT_BEGIN_HEADER
   /* boundary and don't move that point to a Y pixel boundary.             */
 #define SKIP_NONPIXEL_Y_MOVES_RULES_SIZE  10
 
-  SPH_TweakRule  SKIP_NONPIXEL_Y_MOVES_Rules
+  static SPH_TweakRule  SKIP_NONPIXEL_Y_MOVES_Rules
                    [SKIP_NONPIXEL_Y_MOVES_RULES_SIZE] =
   {
     /* fix vwxyz thinness*/
@@ -417,7 +417,7 @@ FT_BEGIN_HEADER
 
 #define SKIP_NONPIXEL_Y_MOVES_RULES_EXCEPTIONS_SIZE  6
 
-  SPH_TweakRule  SKIP_NONPIXEL_Y_MOVES_Rules_Exceptions
+  static SPH_TweakRule  SKIP_NONPIXEL_Y_MOVES_Rules_Exceptions
                    [SKIP_NONPIXEL_Y_MOVES_RULES_EXCEPTIONS_SIZE] =
   {
     { "Tahoma", 0, "", 'N' },
@@ -434,7 +434,7 @@ FT_BEGIN_HEADER
   /* This fixes Tahoma, Trebuchet oddities and some issues with `$'.       */
 #define SKIP_OFFPIXEL_Y_MOVES_RULES_SIZE  5
 
-  SPH_TweakRule  SKIP_OFFPIXEL_Y_MOVES_Rules
+  static SPH_TweakRule  SKIP_OFFPIXEL_Y_MOVES_Rules
                    [SKIP_OFFPIXEL_Y_MOVES_RULES_SIZE] =
   {
     { "MS Legacy Fonts", 0, "", 0 },
@@ -447,7 +447,7 @@ FT_BEGIN_HEADER
 
 #define SKIP_OFFPIXEL_Y_MOVES_RULES_EXCEPTIONS_SIZE  1
 
-  SPH_TweakRule  SKIP_OFFPIXEL_Y_MOVES_Rules_Exceptions
+  static SPH_TweakRule  SKIP_OFFPIXEL_Y_MOVES_Rules_Exceptions
                    [SKIP_OFFPIXEL_Y_MOVES_RULES_EXCEPTIONS_SIZE] =
   {
     { "-", 0, "", 0 },
@@ -457,7 +457,7 @@ FT_BEGIN_HEADER
   /* Round moves that don't move a point to a Y pixel boundary.            */
 #define ROUND_NONPIXEL_Y_MOVES_RULES_SIZE  3
 
-  SPH_TweakRule  ROUND_NONPIXEL_Y_MOVES_Rules
+  static SPH_TweakRule  ROUND_NONPIXEL_Y_MOVES_Rules
                    [ROUND_NONPIXEL_Y_MOVES_RULES_SIZE] =
   {
     /* Droid font instructions don't snap Y to pixels */
@@ -469,7 +469,7 @@ FT_BEGIN_HEADER
 
 #define ROUND_NONPIXEL_Y_MOVES_RULES_EXCEPTIONS_SIZE  3
 
-  SPH_TweakRule  ROUND_NONPIXEL_Y_MOVES_Rules_Exceptions
+  static SPH_TweakRule  ROUND_NONPIXEL_Y_MOVES_Rules_Exceptions
                    [ROUND_NONPIXEL_Y_MOVES_RULES_EXCEPTIONS_SIZE] =
   {
     { "Droid Sans", 12, "Bold", 0 },
@@ -481,7 +481,7 @@ FT_BEGIN_HEADER
   /* Allow a Direct_Move_X along X freedom vector if matched.              */
 #define ALLOW_X_DMOVEX_RULES_SIZE  1
 
-  SPH_TweakRule  ALLOW_X_DMOVEX_Rules
+  static SPH_TweakRule  ALLOW_X_DMOVEX_Rules
                    [ALLOW_X_DMOVEX_RULES_SIZE] =
   {
     { "-", 0, "Regular", 0 },
@@ -491,7 +491,7 @@ FT_BEGIN_HEADER
   /* Allow a Direct_Move along X freedom vector if matched.                */
 #define ALLOW_X_DMOVE_RULES_SIZE  1
 
-  SPH_TweakRule  ALLOW_X_DMOVE_Rules
+  static SPH_TweakRule  ALLOW_X_DMOVE_Rules
                    [ALLOW_X_DMOVE_RULES_SIZE] =
   {
     /* Fixes vanishing diagonal in 4 */
@@ -503,7 +503,7 @@ FT_BEGIN_HEADER
   /* This is called from SHP, SHPIX, SHC, SHZ.                             */
 #define ALLOW_X_MOVE_ZP2_RULES_SIZE  1
 
-  SPH_TweakRule  ALLOW_X_MOVE_ZP2_Rules
+  static SPH_TweakRule  ALLOW_X_MOVE_ZP2_Rules
                    [ALLOW_X_MOVE_ZP2_RULES_SIZE] =
   {
     { "-", 0, "", 0 },
@@ -513,7 +513,7 @@ FT_BEGIN_HEADER
   /* Return MS rasterizer version 35 if matched.                           */
 #define RASTERIZER_35_RULES_SIZE  8
 
-  SPH_TweakRule  RASTERIZER_35_Rules
+  static SPH_TweakRule  RASTERIZER_35_Rules
                    [RASTERIZER_35_RULES_SIZE] =
   {
     /* This seems to be the only way to make these look good */
@@ -531,7 +531,7 @@ FT_BEGIN_HEADER
   /* Don't round to the subpixel grid.  Round to pixel grid.               */
 #define NORMAL_ROUND_RULES_SIZE  2
 
-  SPH_TweakRule  NORMAL_ROUND_Rules
+  static SPH_TweakRule  NORMAL_ROUND_Rules
                    [NORMAL_ROUND_RULES_SIZE] =
   {
     /* Fix point "explosions" */
@@ -543,7 +543,7 @@ FT_BEGIN_HEADER
   /* Skip IUP instructions if matched.                                     */
 #define SKIP_IUP_RULES_SIZE  1
 
-  SPH_TweakRule  SKIP_IUP_Rules
+  static SPH_TweakRule  SKIP_IUP_Rules
                    [SKIP_IUP_RULES_SIZE] =
   {
     { "Arial", 13, "Regular", 'a' },
@@ -553,7 +553,7 @@ FT_BEGIN_HEADER
   /* Skip MIAP Twilight hack if matched.                                   */
 #define MIAP_HACK_RULES_SIZE  1
 
-  SPH_TweakRule  MIAP_HACK_Rules
+  static SPH_TweakRule  MIAP_HACK_Rules
                    [MIAP_HACK_RULES_SIZE] =
   {
     { "Geneva", 12, "", 0 },
@@ -563,7 +563,7 @@ FT_BEGIN_HEADER
   /* Skip DELTAP instructions if matched.                                  */
 #define ALWAYS_SKIP_DELTAP_RULES_SIZE  16
 
-  SPH_TweakRule  ALWAYS_SKIP_DELTAP_Rules
+  static SPH_TweakRule  ALWAYS_SKIP_DELTAP_Rules
                    [ALWAYS_SKIP_DELTAP_RULES_SIZE] =
   {
     { "Georgia", 0, "Regular", 'k' },
@@ -592,7 +592,7 @@ FT_BEGIN_HEADER
   /* Always do DELTAP instructions if matched.                             */
 #define ALWAYS_DO_DELTAP_RULES_SIZE  2
 
-  SPH_TweakRule  ALWAYS_DO_DELTAP_Rules
+  static SPH_TweakRule  ALWAYS_DO_DELTAP_Rules
                    [ALWAYS_DO_DELTAP_RULES_SIZE] =
   {
     { "Verdana Clones", 17, "Regular Class", 'K' },
@@ -603,7 +603,7 @@ FT_BEGIN_HEADER
   /* Do an extra RTG instruction in DELTAP if matched.                     */
 #define DELTAP_RTG_RULES_SIZE  1
 
-  SPH_TweakRule  DELTAP_RTG_Rules
+  static SPH_TweakRule  DELTAP_RTG_Rules
                    [DELTAP_RTG_RULES_SIZE] =
   {
     { "-", 0, "", 0 },
@@ -613,7 +613,7 @@ FT_BEGIN_HEADER
   /* Force CVT distance to zero in MIRP.                                   */
 #define MIRP_CVT_ZERO_RULES_SIZE  1
 
-  SPH_TweakRule  MIRP_CVT_ZERO_Rules
+  static SPH_TweakRule  MIRP_CVT_ZERO_Rules
                    [MIRP_CVT_ZERO_RULES_SIZE] =
   {
     { "-", 0, "", 0 },
@@ -623,7 +623,7 @@ FT_BEGIN_HEADER
   /* Skip moves that meet or exceed 1 pixel.                               */
 #define DELTAP_SKIP_EXAGGERATED_VALUES_RULES_SIZE  1
 
-  SPH_TweakRule  DELTAP_SKIP_EXAGGERATED_VALUES_Rules
+  static SPH_TweakRule  DELTAP_SKIP_EXAGGERATED_VALUES_Rules
                    [DELTAP_SKIP_EXAGGERATED_VALUES_RULES_SIZE] =
   {
     /* Fix vanishing stems */
@@ -634,7 +634,7 @@ FT_BEGIN_HEADER
   /* Don't allow ALIGNRP after IUP.                                        */
 #define NO_ALIGNRP_AFTER_IUP_RULES_SIZE  4
 
-  SPH_TweakRule  NO_ALIGNRP_AFTER_IUP_Rules
+  static SPH_TweakRule  NO_ALIGNRP_AFTER_IUP_Rules
                    [NO_ALIGNRP_AFTER_IUP_RULES_SIZE] =
   {
     /* Prevent creation of dents in outline */
@@ -648,7 +648,7 @@ FT_BEGIN_HEADER
   /* Don't allow DELTAP after IUP.                                         */
 #define NO_DELTAP_AFTER_IUP_RULES_SIZE  2
 
-  SPH_TweakRule  NO_DELTAP_AFTER_IUP_Rules
+  static SPH_TweakRule  NO_DELTAP_AFTER_IUP_Rules
                    [NO_DELTAP_AFTER_IUP_RULES_SIZE] =
   {
     { "Arial", 0, "Bold", 'N' },
@@ -659,7 +659,7 @@ FT_BEGIN_HEADER
   /* Don't allow CALL after IUP.                                           */
 #define NO_CALL_AFTER_IUP_RULES_SIZE  4
 
-  SPH_TweakRule  NO_CALL_AFTER_IUP_Rules
+  static SPH_TweakRule  NO_CALL_AFTER_IUP_Rules
                    [NO_CALL_AFTER_IUP_RULES_SIZE] =
   {
     /* Prevent creation of dents in outline */
@@ -673,7 +673,7 @@ FT_BEGIN_HEADER
   /* De-embolden these glyphs slightly.                                    */
 #define DEEMBOLDEN_RULES_SIZE  9
 
-  SPH_TweakRule  DEEMBOLDEN_Rules
+  static SPH_TweakRule  DEEMBOLDEN_Rules
                    [DEEMBOLDEN_RULES_SIZE] =
   {
     { "Courier New", 0, "Bold", 'A' },
@@ -691,7 +691,7 @@ FT_BEGIN_HEADER
   /* Embolden these glyphs slightly.                                       */
 #define EMBOLDEN_RULES_SIZE  5
 
-  SPH_TweakRule  EMBOLDEN_Rules
+  static SPH_TweakRule  EMBOLDEN_Rules
                    [EMBOLDEN_RULES_SIZE] =
   {
     { "Courier New", 12, "Italic", 'z' },
@@ -705,7 +705,7 @@ FT_BEGIN_HEADER
   /* Do an extra RDTG instruction in DELTAP if matched.                    */
 #define DELTAP_RDTG_RULES_SIZE  1
 
-  SPH_TweakRule  DELTAP_RDTG_Rules
+  static SPH_TweakRule  DELTAP_RDTG_Rules
                    [DELTAP_RDTG_RULES_SIZE] =
   {
     { "-", 0, "", 0 },
@@ -716,7 +716,7 @@ FT_BEGIN_HEADER
   /* similar to Windows XP.                                                */
 #define TIMES_NEW_ROMAN_HACK_RULES_SIZE  12
 
-  SPH_TweakRule  TIMES_NEW_ROMAN_HACK_Rules
+  static SPH_TweakRule  TIMES_NEW_ROMAN_HACK_Rules
                    [TIMES_NEW_ROMAN_HACK_RULES_SIZE] =
   {
     { "Times New Roman", 16, "Italic", '2' },
@@ -738,7 +738,7 @@ FT_BEGIN_HEADER
   /* A real solution to this is certainly welcome.                         */
 #define COURIER_NEW_2_HACK_RULES_SIZE  15
 
-  SPH_TweakRule  COURIER_NEW_2_HACK_Rules
+  static SPH_TweakRule  COURIER_NEW_2_HACK_Rules
                    [COURIER_NEW_2_HACK_RULES_SIZE] =
   {
     { "Courier New", 10, "Regular", '2' },
@@ -766,7 +766,7 @@ FT_BEGIN_HEADER
   /* typically on glyphs with 3 or more vertical stems.                    */
 #define COMPATIBLE_WIDTHS_RULES_SIZE  38
 
-  SPH_TweakRule  COMPATIBLE_WIDTHS_Rules
+  static SPH_TweakRule  COMPATIBLE_WIDTHS_Rules
                    [COMPATIBLE_WIDTHS_RULES_SIZE] =
   {
     { "Arial Unicode MS", 12, "Regular Class", 'm' },
@@ -820,7 +820,7 @@ FT_BEGIN_HEADER
   /* A value of 1000 corresponds to a scaled value of 1.0.                 */
 #define X_SCALING_RULES_SIZE  50
 
-  SPH_ScaleRule  X_SCALING_Rules
+  static SPH_ScaleRule  X_SCALING_Rules
                    [X_SCALING_RULES_SIZE] =
   {
     { "DejaVu Sans", 12, "Regular Class", 'm', 950 },
@@ -881,7 +881,7 @@ FT_BEGIN_HEADER
 
 #define COMPATIBLE_WIDTHS_RULES_SIZE  1
 
-  SPH_TweakRule  COMPATIBLE_WIDTHS_Rules
+  static SPH_TweakRule  COMPATIBLE_WIDTHS_Rules
                    [COMPATIBLE_WIDTHS_RULES_SIZE] =
   {
     { "-", 0, "", 0 },
