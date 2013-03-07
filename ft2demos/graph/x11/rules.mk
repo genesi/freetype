@@ -74,9 +74,11 @@ ifneq ($(X11_PATH),)
   # The GRAPH_LINK variable is expanded each time an executable is linked
   # against the graphics library.
   #
-  ifeq ($(PLATFORM),unix)
-    GRAPH_LINK += $(X11_LIB:%=-R%)
-  endif
+  # No, we do not want rpath on Debian; reversing YAMANO-UCHI Hidetoshi's
+  # 2003-06-13 change.  (Anthony Fok, 2003-08-28)
+  #ifeq ($(PLATFORM),unix)
+  #  GRAPH_LINK += $(X11_LIB:%=-R%)
+  #endif
   GRAPH_LINK += $(X11_LIB:%=-L%) -lX11
 
   # Solaris needs a -lsocket in GRAPH_LINK.
