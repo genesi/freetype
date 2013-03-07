@@ -246,10 +246,7 @@
     FT_Request_Metrics( size->face, req );
 
     if ( FT_IS_SCALABLE( size->face ) )
-    {
       error = tt_size_reset( ttsize );
-      ttsize->root.metrics = ttsize->metrics;
-    }
 
     return error;
   }
