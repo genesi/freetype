@@ -33,6 +33,7 @@
 #include "ftstream.c"
 #include "fttrigon.c"
 #include "ftutil.c"
+#include "ftapi.c"
 
 #ifdef FT_MACINTOSH
 #include "ftmac.c"
