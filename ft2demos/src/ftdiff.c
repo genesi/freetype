@@ -1236,8 +1236,13 @@
 
         if ( text != NULL )
         {
-          fread( text, tsize, 1, tfile );
-          text[tsize] = 0;
+          if (fread( text, tsize, 1, tfile ) < 1) {
+            fprintf( stderr, "could not read '%s'\n", textfile );
+            free( text );
+            text = (char *)default_text;
+          } else {
+            text[tsize] = 0;
+          }
         }
         else
         {

@@ -411,6 +411,7 @@
 
         if ( file == NULL )  /* shouldn't happen */
         {
+          free( (void *)font->filepathname );
           free( font );
           return FT_Err_Invalid_Argument;
         }
@@ -420,7 +421,15 @@
         fseek( file, 0, SEEK_SET );
 
         font->file_address = malloc( file_size );
-        fread( font->file_address, 1, file_size, file );
+
+        if (fread( font->file_address, 1, file_size, file ) < file_size)
+        {
+          fclose( file );
+          free( font->file_address );
+          free( (void *)font->filepathname );
+          free( font );
+          return FT_Err_Invalid_Argument;
+        }
 
         font->file_size = file_size;
 
