@@ -70,8 +70,8 @@ build: build-stamp
 build-stamp:
 	dh_testdir
 	cd $(freetype_u) && ./configure $(conf_args) CFLAGS="$(CFLAGS)"
-	$(MAKE) -j$(NUMJOBS) -C $(freetype_u)
-	$(MAKE) -j$(NUMJOBS) -C $(ft2demos_u) TOP_DIR=../$(freetype_u) OBJ_DIR=../$(freetype_u)/objs
+	$(MAKE) -C $(freetype_u)
+	$(MAKE) -C $(ft2demos_u) TOP_DIR=../$(freetype_u) OBJ_DIR=../$(freetype_u)/objs
 
 	docbook-to-man $(freetype_config_sgml) > $(freetype_config_man)
 
@@ -84,8 +84,10 @@ clean:
 	rm -f build-stamp
 	rm -f $(freetype_config_man)
 
-	if test -e $(freetype_u)/Makefile; then $(MAKE) -C $(freetype_u) clean; fi
-	if test -e $(ft2demos_u)/Makefile; then $(MAKE) -C $(ft2demos_u) TOP_DIR=../$(freetype_u) OBJ_DIR=../$(freetype_u)/objs clean; fi
+	if test -e $(freetype_u)/builds/unix/unix-def.mk; then \
+		$(MAKE) -C $(freetype_u) clean; \
+		$(MAKE) -C $(ft2demos_u) TOP_DIR=../$(freetype_u) OBJ_DIR=../$(freetype_u)/objs clean; \
+	fi
 
 	dh_clean
 
