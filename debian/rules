@@ -84,8 +84,8 @@ clean:
 	rm -f build-stamp
 	rm -f $(freetype_config_man)
 
-	$(MAKE) -j$(NUMJOBS) -C $(freetype_u) clean
-	$(MAKE) -j$(NUMJOBS) -C $(ft2demos_u) TOP_DIR=../$(freetype_u) OBJ_DIR=../$(freetype_u)/objs clean
+	if test -e $(freetype_u)/Makefile; then $(MAKE) -C $(freetype_u) clean; fi
+	if test -e $(ft2demos_u)/Makefile; then $(MAKE) -C $(ft2demos_u) TOP_DIR=../$(freetype_u) OBJ_DIR=../$(freetype_u)/objs clean; fi
 
 	dh_clean
 
